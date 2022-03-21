@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Gamja+Flower&family=Jua&family=Lobster&family=Nanum+Pen+Script&display=swap" rel="stylesheet">
+    <title>Document</title>
+    <style>
+        span.day{
+            font-size: 2em;
+            font-family: 'Gamja Flower';
+            color: red;
+        }
+        div.time{
+            position: absolute;
+            left: 200px;
+            top: 300px;
+            font-size: 40ox;
+            font-family: 'Jua';
+            border: 10px solid gold;
+            text-align: center;
+            width: 500px;
+            height: 100px;
+            line-height: 100px;
+            box-shadow: 8px 8px 5px gray;
+        }
+    </style>
+</head>
+<body>
+    <script>
+        //현재 날짜와 시간 출력
+        var date=new Date();
+        var day="<span class='day'>현재 날짜: "+date.getFullYear()
+            +"-"+(date.getMonth()+1)+"-"+date.getDate();
+        document.write(day)
+    </script>
+    <hr align="left" width="500" size="5" color="magenta">
+    <span class="day">
+        현재 시간 :
+        <script>
+            var s= date.getHours()+":"+date.getMinutes()+":"+date.getSeconds();
+            document.write(s)
+        </script>
+    </span>
+    <div class="time" id="time">
+    </div>
+    <script>
+        setInterval(function(){
+            var date2=new Date();
+            var s2= date2.getHours()+":"+date2.getMinutes()+":"+date2.getSeconds();
+        document.getElementById("time").innerHTML=s2;
+        console.log(s2);
+        },1000)
+    </script>
+</body>
+</html>

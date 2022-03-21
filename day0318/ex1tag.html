@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>예제1</title>
+    <link href="https://fonts.googleapis.com/css2?family=Gamja+Flower&family=Jua&family=Lobster&family=Nanum+Pen+Script&display=swap" rel="stylesheet">
+    <!--  css 영역입니다.  -->
+    <style>
+
+         /* (.클래스이름)으로 적용하면 특정 클래스 이름을 가진 div에만 적용된다.*/
+         /*div 태그의 a클래스에만 적용*/
+         div.a{ 
+           
+             font-size: 2em; /*상위 태그의 2배*/
+             font-family: 'Gamja Flower';
+             text-shadow: 5px 5px 5px gray;
+
+         }
+
+         /*b 태그의 클래스 a에만 적용*/
+         b.a{
+             background-color:cadetblue;
+             font-family: Jua;
+         }
+
+         /* 모든 태그의 클래스 b에 적용 */
+         
+         .b {
+             border: 5px solid red;
+             font-family: 'Nanum Pen Script';
+             font-size: 5em;
+         }
+         
+         div.c{
+             font-family: 'Lobster';
+             font-size: 3em;
+             width: 300px;
+             height: 200px;
+             border: 2px solid;
+             /* 1줄의 경우 정 가운데 보내려면*/
+             line-height: 100px;
+             text-align: center;
+             /* 요소 아래의 바깥여백 */
+             margin-bottom: 30px;
+             box-shadow: 10px 10px 10px pink;
+             text-shadow: 3px 3px 3px green;
+         }
+
+         img.img1{
+             /*위치 좌표를 주고 싶으면 position이 꼭 있어야한다.*/
+             /* absolute = 절대좌표 */
+             position:absolute;
+             left:600px;
+             top:200px;
+         }
+
+         img.img2{
+             border: 100px;
+             width: 600px;
+             box-shadow: 10px 10px 20px purple;
+             margin: 30px;
+
+             position: absolute;
+             left: 400px;
+             top: 400px;
+             border: 10px groove gold;
+         }
+
+    </style>
+</head>
+<body>
+    <font size="5" color="cyan">Front Tag Test</font><br>
+    <!-- 태그안에 style을 일일히 적용 가능 -->
+    <b style="font-size:20px;color: magenta;">Have a Nice Day!!!</b><br>
+    <b class="a">Happy Day!!!</b><br><br>
+    <b class="b">재미있는 자바스크립트!!</b><br>
+
+    <!-- class 는 id와 다르게 여러번 쓸 수 있다. -->
+    <div class="a">안녕하세요.</div>
+    <div class="b">반가워요!!</div>
+    <div class="c">Nice to meet you!</div>
+
+    <img src="../snoopyAvata/s1.JPG" class="img1" title="개똥이" alt="개똥이없음">
+    <img src="../div_img/beauty2.jpg"class="img2" title="내방입니다." alt="내방아님">
+</body>
+</html>
