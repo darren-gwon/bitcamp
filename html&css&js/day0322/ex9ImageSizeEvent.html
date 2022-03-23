@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Gamja+Flower&family=Jua&family=Lobster&family=Nanum+Pen+Script&display=swap" rel="stylesheet">
+
+    <title>Document</title>
+    <style>
+        body *{
+            font-size: 1.4em;
+            font-family: 'Jua';
+        }
+    </style>
+</head>
+<body>
+    <button type="button" id="btn1">점점작게</button>
+    <button type="button" id="btn2">점점크게</button>
+    <br><br>
+    <img src="../연예인사진 (2)/15.jpg" width="300" id="photo"
+    border="2px">
+    
+    <script>
+        var i = document.getElementById("photo");
+        var width = parseInt( i.getAttribute("width") );
+
+        btn1.onclick=function(){
+            
+            i.setAttribute("width", width-=10);
+        }
+    
+        btn2.onclick=function(){
+            i.setAttribute("width", width+=10);
+        }
+
+    </script>
+</body>
+</html>

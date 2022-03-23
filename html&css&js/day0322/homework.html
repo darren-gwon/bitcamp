@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Gamja+Flower&family=Jua&family=Lobster&family=Nanum+Pen+Script&display=swap" rel="stylesheet">
+
+    <title>Document</title>
+    <style>
+        .wrapper {
+            display: grid;
+            grid-template-columns:  100px 300px 200px;
+            grid-template-rows:  500px 500px 500px;
+        }
+        .wrapper>div {
+            padding-top: 30px;
+            padding-left: 30px;
+
+        }
+        table{
+            border: 1px solid black;
+            width: 300px;
+            border-radius: 15px;
+            padding: 0px 20px 20px 40px;
+            background-color: azure;
+            font-size: 30px;
+            font-family: 'Jua';
+        }
+    </style>
+</head>
+
+<body>
+    <div class="wrapper">
+
+        <div class="section1">
+            <b>이름:</b><br><br>
+            <b>자바:</b><br><br>
+            <b>HTML:</b><br><br>
+        </div>
+        <div class="section1">
+            <input type="text" id="nameinput" style="height: 25px;"><br><br>
+            <input type="text" id="javainput" style="height: 25px;"><br><br>
+            <input type="text" id="htmlinput" style="height: 25px;"><br><br>
+            <button type="button" id="resultbtn" style="width: 175px;">결과</button>
+        </div>
+
+        <div>
+            <table class="ersult">
+                <td>
+                <p>
+                    이름:
+                    <span id="nameTxt"></span>
+                </p>
+                <p>
+                    자바:
+                    <span id="javaScoreTxt"></span>
+                </p>
+
+                <p>
+                    HTML:
+                    <span id="htmlScoreTxt"></span>
+                </b>
+                <p>
+                    총점:
+                    <span id="totalScoreTxt"></span>
+                </p>
+
+                <p>
+                    평균:
+                    <span id="averageTxt"></span>
+                </p>
+            </td>
+            </table>
+        </div>
+
+    </div>
+    <script>
+        var myName = document.getElementById("nameinput");
+        var javaScoreInput = document.getElementById("javainput");
+        var htmlScoreInput = document.getElementById("htmlinput");
+
+        var sum;
+        var average;
+        resultbtn.onclick=function(){
+            if (myName.value==''){
+                alert("이름을 입력해주세요.")
+                myName.focus();
+                return;
+            }
+            if (javaScoreInput.value==''){
+                alert("자바 점수를 입력해주세요.")
+                javaScoreInput.focus();
+                return;
+            }
+            if (htmlScoreInput.value==''){
+                alert("HTML점수를 입력해주세요.")
+                htmlScoreInput.focus();
+                return;
+            }
+            
+            var sum = parseInt(javaScoreInput.value) + parseInt(htmlScoreInput.value);
+            var average = sum/2;
+            document.getElementById("nameTxt").innerText=myName.value;
+            document.getElementById("javaScoreTxt").innerText=javaScoreInput.value+" 점";
+            document.getElementById("htmlScoreTxt").innerText=htmlScoreInput.value+" 점";
+
+            document.getElementById("totalScoreTxt").innerText=sum+"점";
+            document.getElementById("averageTxt").innerText=average+"점";
+            
+        }
+    </script>
+</body>
+</html>

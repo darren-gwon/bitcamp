@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Gamja+Flower&family=Jua&family=Lobster&family=Nanum+Pen+Script&display=swap" rel="stylesheet">
+
+    <title>Document</title>
+    <style>
+        body *{
+            font-size: 1.4em;
+            font-family: 'Jua';
+        }
+    </style>
+</head>
+<body>
+    <h2>1부터 20까지의 숫자를 입력 후 엔터를 눌러주세요.</h2>
+    <b>숫자입력:</b> <input type="text" id="txtnum" style="width: 70px;" autofocus>
+    <br><br>
+    <img src="../연예인사진 (2)/1.jpg" style="width: 400px;border: 1px solid black;"
+    id="photo">
+    <br>
+    <b>이미지경로:</b> <span id="msg">../연예인사진 (2)/1.jpg</span>
+    <script>
+        var im = document.getElementById('photo');
+        var msg = document.getElementById('msg');
+
+        document.getElementById('txtnum').onkeyup=function(e){
+            console.log(e.target.value);
+            console.log(e.keyCode);
+
+            var v = this.value;
+
+            if(e.keyCode==13){
+                if(v<1 || v>20){
+                    alert("1부터 20까지의 숫자만 입력해주세요.");
+                    this.value="";
+                    this.focus();
+                    return;
+                }
+
+                var file="../연예인사진 (2)/"+v+".jpg";
+                im.setAttribute("src", file);
+                msg.innerText=file;
+                
+                this.value="";
+                this.focus();
+                
+            }
+        }
+    </script>
+
+</body>
+</html>

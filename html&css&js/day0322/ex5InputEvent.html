@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        /* #은 id를 의미 */
+        #msg{
+            width:700px;
+            font-size: 2em;
+            text-align: center;
+            font-family: 'Jua';
+            border: 2px solid orange;
+            height: 60px;
+            line-height: 60px;
+            margin-bottom: 30px;
+        }
+
+        button{
+            width: 150px;
+            height: 40px;
+            line-height: 40px;
+            font-family: 'Jua';
+            font-size: 1.2em;
+            background-color: pink;
+            color: blue;
+        }
+
+        button:hover{
+            box-shadow: 5px 5px 5px gray;
+        }
+
+
+    </style>
+    <script>
+        window.onload= function(){
+        var name = document.getElementById("txtname");
+        var year = document.getElementById("txtyear");
+        var msg = document.getElementById("msg");
+        
+        document.getElementById('btn1').onclick=function(){
+            if(name.value==''){
+                alert("이름을 먼저 입력해주세요");
+                name.focus();
+                return;
+            }
+
+            if(year.value==''){
+                alert("나이를 먼저 입력해주세요");
+                year.focus();
+                return;
+            }
+
+            //태어난 년도에 문자가 들어있을경우 경고메세지 후 종료
+            if(isNaN(year.value)){
+                alert("태어난 년도는 숫자로만 입력해주세요.")
+                year.value="";
+                year.focus();
+                return;
+            }
+            var ddi = ["원숭이", "닭", "개", "돼지", "쥐", "소", "범", "용", "뱀", "말", "양"];
+
+            msg.innerHTML=name.value+"님은 "+year.value+"년생입니다. </b>";
+            msg.innerHTML+="<span style='color:red;'>("+ddi[year.value%12]+"띠)</span>"
+            //띠 구하기
+            
+        }
+    }
+        </script>
+</head>
+<body>
+    <div id="msg"> 여기에 이벤트 결과 출력</div>
+    <b>이름 입력:</b>
+    <input type="text" id="txtname" style="width: 120px;">
+
+    <b>태어난 년도 입력:</b>
+    <input type="text" id="txtyear" style="width: 120px;">
+    <button type="button" id="btn1">결과 출력</button>
+</body>
+</html>
