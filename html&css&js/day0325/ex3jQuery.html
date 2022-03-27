@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://code.jquery.com/jquery-3.5.0.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Gamja+Flower&family=Jua&family=Lobster&family=Nanum+Pen+Script&display=swap" rel="stylesheet">
+    <style>
+        body * {
+            font-size: 1.2rem;
+            font-family: 'Jua';
+        }
+    </style>
+
+    <script>
+        //window.onload
+        $(function(){
+            $("div.apple").css("color","red");
+            //이건 바로 하위태그(좁음) 정확히 특정 태그에만 적용시키고 싶을때
+            $("div.apple>div.banana").css("font-size","25px");
+            
+            //이건 모든 하위태그
+            //$("div.apple>div.banana").css("font-size","25px");
+
+            $(".banana").css("border","3px dotted green");
+
+            //div태그의 하위태그들 중에 id가 kiwi인거
+            //$("div#kiwi").css("border","3px dotted green");
+
+
+            //div태그 중에 id가 kiwi인거
+            //방법1: 3개의 style적용시 이어붙여도된다.
+            $("div#kiwi").css("color","tomato").css("font-size","3em")
+            .css("background-color","#ffc");
+
+            //방법2: 여러개의 스타일 적용시
+            $("span.banana").css({
+                "color":"gray",
+                "border":"5px inset yellow",
+                "font-size":"4em",
+                "background-color":"cyan"
+            });
+
+            //span.banana의 배경색을 얻어서 b.apple에 적용해보자
+            $("b.apple").css("background-color", $("span.banana").css("background-color"));
+
+            $("#orange").css("color", $("#kiwi").css("color"));
+
+            $("#img1").attr("src","../img/ani12.gif");
+            $("img").attr("src","../연예인사진 (2)/12.jpg");
+
+            $("img").attr({
+                "src":"../연예인사진 (2)/12.jpg",
+                // 여기서 width와 height는 css가 아니고 속성 값이라 단위가 없다.
+                "width":"200",
+                "height":"240",
+                "border":"2"
+            })
+
+        });
+    </script>
+</head>
+
+<body>
+    <!-- 교재 452p 
+    
+        css함수 : style 변경할때 쓰는 함수(인자가 1개일 땐 css값 반환==get의 역할을 한다는것같다.)
+        attr함수 : 속성 변경할 때 쓰는 함수(인자가 1개일 땐 attr값 반환==get의 역할을 한다는것같다.)
+    -->
+    <div class="apple">
+        Div apple class
+        <div class="banana">
+            Div apple 안에 banana class
+        </div>
+    </div>
+
+
+    <b class="apple"> B tag apple class</b><br>
+    <b id="orange"> B tag id가 orange</b><br>
+    <span class="banana">Span Tag banana Class</span>
+    <div id="kiwi">
+        Div id가 kiwi
+    </div>
+    
+    <span class="apple banana">
+        span tag class가 2개(apple, banana)
+    </span>
+    <br><br>
+    <img src="" id="img1">
+    <img src="" class="myimage">
+    <img src="" class="myimage">
+    <img src="" class="myimage">
+
+</body>
+
+</html>

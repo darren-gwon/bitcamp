@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- 클라이언트의 디스크에 소량의 데이터를 저장해두기 위한 기억공간(쿠키와 비슷) 
+    키/값 쌍으로 자료를 저장하고 키를 이용하여 자료를 조회한다
+    Local Storage : 반영구적보관 크기는 약 5MB
+    Session Storage: 세션이 유효한만큼만 보관
+    -->
+
+    <button id="btnAdd">저장</button>
+    <b>Key값(영문):</b><input type="text" id="myKey" style="width: 100px;">
+    &nbsp;&nbsp;&nbsp;
+    <b>저장할 값:</b><input type="text" id="myData" style="width: 100px;">
+    <br>
+    <button id="btnDel">삭제</button>
+    <button id="btnDelAll">전체삭제</button>
+
+    <button type="button" id="btnView">내용보기</button>
+    <div id="view"></div>
+
+    <script>
+        document.getElementById("btnAdd").onclick=function(){
+            //쿠키는 백엔드
+            //자스나 프론트에서는 로컬스토리지
+
+            
+            //localStorage.setItem("name","이효리");
+            //localStorage.age="23세";
+            //localStorage["addr"]="서울강남";
+
+            myKey=document.getElementById("myKey").value;
+            myData=document.getElementById("myData").value;
+            
+            localStorage.setItem(myKey,myData);
+        }
+
+        document.getElementById("btnDel").onclick=function(){
+
+            myKey=document.getElementById("myKey").value;
+            localStorage.removeItem(myKey);
+            
+        }
+
+        document.getElementById("btnDelAll").onclick=function(){
+            localStorage.clear();
+        }
+
+        document.getElementById("btnView").onclick=function(){
+            var s = "로컬스토리지 값 가져오기<br>";
+            // s+="name:" + localStorage.getItem("name")+"<br>";
+            // s+="age:" + localStorage.age+"<br>";
+            // s+="addr:" + localStorage["addr"]+"<br>";
+            // s+="id:" + localStorage.getItem("id")+"<br>";
+            // s+="flower:" + localStorage.flower+"<br>";
+
+            for(i=0;i<localStorage.length;i++){
+                var k =localStorage.key(i);
+                s+=k+":"+localStorage.getItem(k)+"<br>";
+            }
+
+            document.getElementById("view").innerHTML=s;
+
+
+        }
+    </script>
+</body>
+</html>
