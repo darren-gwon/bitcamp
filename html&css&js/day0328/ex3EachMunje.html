@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://code.jquery.com/jquery-3.5.0.js"></script>
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Gamja+Flower&family=Jua&family=Lobster&family=Nanum+Pen+Script&display=swap" rel="stylesheet">
+    <style>
+        body div {
+            font-size: 1.2rem;
+            font-family: 'Jua';
+        }
+
+        div{
+            width: 120px;
+            height: 120px;
+            border: 3px solid gray;
+            cursor: pointer;
+            float: left;
+            margin-left: 10px;
+            background-repeat: no-repeat;
+            background-size: 120px 120px;
+            background-image: url;
+        }
+    </style>
+    <script>
+        $(function(){
+            var imgArr=new Array(5);
+            imgArr[0] = "../음식이미지/갈비립.jpg";
+            imgArr[1] = "../음식이미지/김밥.jpg";
+            imgArr[2] = "../음식이미지/새우볶음.jpg";
+            imgArr[3] = "../음식이미지/알밥.jpg";
+            imgArr[4] = "../음식이미지/떡볶이.jpg";
+
+            //문제1: each 반복문을 이용해서 div에 위 배열 이미지를 넣는다.
+            //background-imagedp url('파일명')을 이용해서 넣는다.
+
+            //문제2: 이미지에 마우스를 올리면 'border'를 5px dotted pink로 변경하고
+            //해당 이미지의 파일명을 b태그에 출력
+            //마우스가 벗어나면 border는 원래대로 변경(hover 이용해서 해보세요.)
+
+            $("div").each(function(index){
+                $(this).css("background-image","url("+imgArr[index]+")");
+                
+            });
+
+            $("div").hover(function(){
+                $(this).css("border","5px dotted pink");
+                $("b").text($(this).css("background-image"));
+            }, function(){
+                $(this).css("border","3px solid gray");
+
+            })
+        
+            
+        });
+    </script>
+</head>
+<body>
+    <b>111</b>
+    <br>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+</body>
+</html>
