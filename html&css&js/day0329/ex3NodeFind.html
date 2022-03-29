@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://code.jquery.com/jquery-3.5.0.js"></script>  
+    <link href="https://fonts.googleapis.com/css2?family=Gamja+Flower&family=Jua&family=Lobster&family=Nanum+Pen+Script&display=swap" rel="stylesheet">
+    <style>
+        body *{      
+            font-size: 1.3rem;    
+            font-family: 'Jua';
+        }
+    </style>
+</head>
+<body>
+    <div class="one">
+        첫번째 div태그
+        <div class="hana">div 하나</div>
+        <div>둘</div>
+        <div>셋</div>
+        <div>h3 Tag</div>
+        <div>h4 Tag</div>
+    </div>
+    <div class="two">
+        두번째 div태그
+        <div class="hana">div 하나</div>
+        <div>둘</div>
+        <div>셋</div>
+        <div>h3 Tag</div>
+        <div>h4 Tag</div>
+    </div>
+
+    <script>
+        /*
+        parent():부모태그
+        siblings():형제태그
+        children(),find():자식태그
+        next():바로 다음 태그
+        prev():바로 이전 태그
+        */
+
+        $("div.one div.hana").siblings().css("color","red");
+        //div의 자식태그 중 div.hana를의미
+        $("div").children("div.hana").css("text-decoration","underline");
+
+        //div.hava 의 2번째 이후 태그
+        $("div.hana").next().next().css("border", "2px solid gold");
+
+        //div.one의 siblings는 div.two이다.
+        $("div.one").click(function(){
+            $(this).find("div").show('slow');
+
+            $(this).siblings().find("div").hide('slow');
+        })
+
+        $("div.two").click(function(){
+            $(this).find("div").show('slow');
+
+            $(this).siblings().find("div").hide('slow');
+        })
+
+    </script>
+</body>
+</html>

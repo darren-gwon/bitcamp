@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://code.jquery.com/jquery-3.5.0.js"></script>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Gamja+Flower&family=Jua&family=Lobster&family=Nanum+Pen+Script&display=swap"
+        rel="stylesheet">
+</head>
+
+<body>
+        <img src="" id="img">
+        <div id="imgPath"></div>
+</body>
+<script>
+    var arr = ["../연예인사진/12.jpg", "../연예인사진/13.jpg",
+        "../연예인사진/14.jpg", "../연예인사진/15.jpg", "../연예인사진/16.jpg"];
+
+    setImage(0);
+
+    $("#img").click(function () {
+        var r = parseInt(Math.random() * arr.length);
+        setImage(r);
+    });
+
+    function setImage(idx) {
+        $("#img").attr("src",arr[idx]);
+        $("#imgPath").html("<b>이미지 이름: " +arr[idx]+"</b>");
+    };
+</script>
+
+</html>
