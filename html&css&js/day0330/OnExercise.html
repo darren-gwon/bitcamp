@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://code.jquery.com/jquery-3.5.0.js"></script>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Gamja+Flower&family=Jua&family=Lobster&family=Nanum+Pen+Script&display=swap"
+        rel="stylesheet">
+</head>
+<style>
+    .area0{
+        border: 1px solid black;
+        width: 1350px;
+        height: 600px;
+        padding-left: 30px;
+        padding-top: 30px;
+    }
+    div.area1, div.area2{
+        margin-right: 100px;
+    }
+    div.area1, div.area2, div.area3 {
+        border: 1px solid black;
+        width: 350px;
+        height: 200px;
+        float: left;
+    }
+
+    div.area4 {
+        position: absolute;
+        top: 270px;
+        border: 1px solid black;
+        width: 1250px;
+        height: 200px;
+    }
+
+    span.theater, span.movie{
+        cursor: pointer;
+    }
+</style>
+
+<body>
+    <div class="area0">
+        <div class="area1">
+            <button type="button" class="reserveBtn">영화 예매</button>
+        </div>
+        <div class="area2"></div>
+        <div class="area3"></div>
+        <div class="area4"></div>
+    </div>
+</body>
+
+<script>
+    var selectedTheater, selectedMovie;
+    $("button.reserveBtn").click(function(){
+        var s = "<button type='button' class='selectTheater'>극장선택</button>";
+            s += "<button type='button' class='selectMovie'>영화선택</button>";
+        $("div.area2").html(s);
+    })
+
+    $(document).on("click", "button.selectTheater", function(){
+        var idx = 0;
+        // var s= "<b class='theater"+ idx++ +"'>CGV 강남점</b><br>";
+        // s+= "<b class='theater"+ idx++ +"'>MEGABOX 강남점</b><br>";
+        // s+= "<b class='theater"+ idx++ +"'>롯데시네마 강남점</b><br>";
+        var s= "<span class='theater'>CGV 강남점</span><br>";
+        s+= "<span class='theater'>MEGABOX 강남점</span><br>";
+        s+= "<span class='theater'>롯데시네마 강남점</span><br>";
+        
+        $("div.area3").html(s);
+    });
+
+    $(document).on("click", "button.selectMovie", function(){
+        var s = "<span class='movie'>스파이더맨 홈커밍</span><br>";
+        s+= "<span class='movie'>어벤져스 엔드게임</span><br>";
+        s+="<span class='movie'>노트북</span><br>";
+        s+="<span class='movie'>라라랜드</span><br>";
+
+        $("div.area3").html(s);
+    })
+
+    $(document).on("click", ".theater", function(){
+        console.log($(this));
+        selectedTheater = $(this).text();
+        finishedselection();
+    });
+
+
+
+    $(document).on("click", ".movie", function(){
+        selectedMovie= $(this).text();
+        finishedselection();
+    });
+
+function finishedselection(){
+    if(selectedTheater!=null && selectedMovie!=null){
+        var s = "<span id='theaterName'> 극장명 : "+selectedTheater+"</span><br>";
+        s+="<span id='movieName'> 영화명 : "+selectedMovie+"</span><br>";
+        s+="<span id='msg'> 즐거운 관람 되시길 바랍니다~</span><br>";
+
+        $("div.area4").html(s);
+    }
+}
+</script>
+</html>
