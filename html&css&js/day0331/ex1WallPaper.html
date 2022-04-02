@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://code.jquery.com/jquery-3.5.0.js"></script>
+
+    <link href="https://fonts.googleapis.com/css2?family=Gamja+Flower&family=Jua&family=Lobster&family=Nanum+Pen+Script&display=swap" rel="stylesheet">
+</head>
+<style>
+    body,h1,ul{
+        margin:0;
+        padding:0;
+    }
+
+    li{list-style: none;}
+
+    body{background-color: #fff;}
+
+    div.wall{
+        width: 800px;
+        height: 600px;
+        margin: 50px auto;
+        background-color: #999;
+        position: relative;
+        box-shadow: 0 0 10px rgba(0,0,0,0,2);
+        border-radius: 5px;
+        border: 5px solid #333;
+        overflow: hidden; /*옆 스크롤바 안보이게 처리. 필요하면 자동으로 생김. 기본값auto*/
+    }
+    
+    h1.title{
+        font-family: 'Nanum Pen Script';
+        font-size: 37px;
+        position: absolute;
+        right: 50px;
+        top: 60px;
+        width: 130px;
+    }
+
+    div.wall ul.list{
+        background-color: rgba(0,0,0,0,0.9);
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        height: 100px;
+        border-top: 1px solid #666;
+    }
+
+    div.wall ul.list li{
+        float: left;
+        margin-left: 10px;
+        margin-top: 10px;
+        width: 70px;
+        height: 70px;
+        border: 5px solid #333;
+        border-radius: 10px;
+        cursor: pointer;
+    }
+
+    div.wall ul.list li img{
+        width: 100%;
+    }
+
+    div.wall ul.list li.active{
+        border-color: cornflowerblue;
+    }
+
+</style>
+<script>
+    $(function(){
+        //둘이 다름!
+        //$("ul.list img")
+        $("ul.list>li>img").click(function(){
+            //부모 태그인 li에 class active 추가
+            $(this).parent().addClass("active");
+            //부모의 다른 형제들에 있는 class active 제거
+            $(this).parent().siblings().removeClass("active");
+
+            //클릭한 이미지에 title을 추출
+            //위에서 얻은 title을 h1.title에 넣는다.
+            $("div>h1.title").text($(this).attr("title"));
+            //클릭한 이미지의 src를 얻는다(변수명 mywall)
+            var mywall = $(this).attr("src");
+
+            //mywall을 div.wall에 배경이미지를 넣는다(background-image로 넣기)
+            $("div.wall").css("background-image","url("+mywall+")");
+        });
+    });
+</script>
+</head>
+<body>
+    <div class="wall">
+        <h1 class="title">Select Page</h1>
+        <img src="../jquery_image/cover2.png">
+        <ul class="list">
+            <li><img src="../jquery_image/b01.png" title="Pear"></li>
+            <li><img src="../jquery_image/b02.png" title="Checker"></li>
+            <li><img src="../jquery_image/b03.png" title="Bamboo"></li>
+            <li><img src="../jquery_image/b04.png" title="School"></li>
+            <li><img src="../jquery_image/b05.png" title="Leap"></li>
+            <li><img src="../jquery_image/b06.png" title="Forest"></li>
+
+        </ul>
+    </div>
+</body>
+</html>
