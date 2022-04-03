@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Gamja+Flower&family=Jua&family=Lobster&family=Nanum+Pen+Script&display=swap" rel="stylesheet">
+
+</head>
+<style>
+    body{
+        font-family: 'Jua';
+    }
+
+    div.buttons{
+        position: relative;
+        left: 200px;
+        top:50px;
+    }
+
+    div.buttons button{
+        width: 130px;
+    }
+    
+    div.inputform, div.list{
+        position: absolute;
+        left: 150px;
+        top: 150px;
+    }
+</style>
+<script>
+    $(function(){
+        var objArr = new Array();
+
+        //처음엔 입력폼만 보이게
+        $("div.inputform").show();
+        $("div.list").hide();
+        
+        $("#btninpshow").click(function(){
+            $("div.inputform").show();
+            $("div.list").hide();
+        });
+
+        $("#btnlistshow").click(function(){
+            $("div.inputform").hide();
+            $("div.list").show();
+        })
+
+        $("#btnsave").click(function(){
+            var obj = new Object();
+            obj.name = $("#txtname").val();
+            obj.age = $("#txtage").val();
+            obj.addr = $("#txtaddr").val();
+
+            objArr.push(obj);
+            $("h1.info>b").text( objArr.length+"명의 데이터가 배열에 저장되어 있습니다." );
+
+            $("#txtname").val("");
+             $("#txtage").val("");
+            $("#txtaddr").val("");
+
+            $("#txtname").focus();
+        });
+        
+        
+        $("#btnlistshow").click(function(){
+            var s="<table class='table table-striped' style='width:500px;'>";
+                s+="<caption><b>데이터  목록</b></caption>";
+                s+="<tr><th>번호</th><th>이름</th><th>나이</th><th>주소</th><th>편집</th></tr>"
+                if(objArr.length==0){
+                    s+="<tr><td colspan=5 align=center>저장된 데이터가 없습니다.</td></tr>"
+                } else {
+                $.each(objArr, function(index, item){
+                    
+                        s+="<tr>";
+                        s+="<td>"+(index+1)+"</td>";
+                        s+="<td>"+item.name+"</td>";
+                        s+="<td>"+item.age+"</td>";
+                        s+="<td>"+item.addr+"</td>";
+                        s+="<td><span class='glyphicon glyphicon-edit'></span>&nbsp;";
+                        s+="<span class='glyphicon glyphicon-trash'></span></td>"
+                        s+="</tr>";
+                    });
+                    s+="</table>";
+                }
+                $("div.list").html(s);
+
+        });
+
+    });
+</script>
+
+</head>
+<body>
+    <div class="buttons">
+        <button type="button" class="btn btn-info" id="btninpshow">
+            <span class="glyphicon glyphicon-pencil"></span> 데이터 추가 폼</button>
+        <button type="button" class="btn btn-danger" id="btnlistshow">
+            <span class="glyphicon glyphicon-th-list"></span>데이터 목록</button>
+    </div>
+    <div class="inputform">
+        
+        <table class="table table-bordered" style="width: 300px">
+            <caption><b>데이타 추가하기</b></caption>
+            <tr>
+                <th style="width: 100px; background-color: #fcc;">이 름</th>
+                <td>
+                    <input type="text" id="txtname" class="form-contorl input-sm" placeholder="input name"> 
+                </td>
+            </tr>
+            <tr>
+                <th style="width: 100px; background-color: #fcc;">나 이</th>
+                <td>
+                    <input type="text" id="txtage" class="form-contorl input-sm" placeholder="input age"> 
+                </td>
+            </tr>
+            <tr>
+                <th style="width: 100px; background-color: #fcc;">주 소</th>
+                <td>
+                    <input type="text" id="txtaddr" class="form-contorl input-sm" placeholder="input address"> 
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2" align="clear">
+                    <button type="button" class="btn btn-default" id="btnsave">
+                        배열에 저장 <span class="glyphicon glyphicon-floppy-disk"></span>
+                    </button>
+                </td>
+            </tr>
+        </table>
+        <h1 class="info"><b></b></h1>
+    </div>
+    <div class="list">
+
+    </div>
+
+
+</body>
+</html>
